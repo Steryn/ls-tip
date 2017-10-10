@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var length = 10;
+        function fn() {
+            console.log(this.length)
+        }
+
+        var obj1 = {
+            length: 5,
+            method: function (fn) {
+                arguments[0]();
+                console.log(arguments)
+            }
+        }
+        obj1.method(fn,null);//1  this指向arguments,arguments的长度即此处参数长度
+
+        var obj2 = {
+            length: 5,
+            method: fn
+        }
+        obj2.method();//5 this为obj2对象的length
+
+        var obj3 = {
+            length: 5,
+            method: fn()
+        }
+        obj3.method;//10 this等同于全局length
+        fn();//10
+    </script>
+</body>
+
+</html>
