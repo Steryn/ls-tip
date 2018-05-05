@@ -1,0 +1,87 @@
+
+**居中
+水品居中
+1.inline-block + text-align  //父级 + 子级
+2.table + margin //子级
+3.absolute +transform //子级
+4.flex + margin //父级 + 子级
+5.flex+justify-content //父级
+
+垂直居中
+1.table-cell + vertical-align //父级
+2.absolute + transform(50%) //子级
+3.flex +align-items //父级
+
+水平垂直居中
+1.absolute + transform //子级
+2.inline-block + table-cell + text-align + vertical-align //父级+子级(inline-block)3.flex + justoft-content + align-items //父级
+
+**多列布局
+定宽+自适应
+1.float + overflow //左float+width+margin-right;右overflow:hidden
+2.float + margin //左float+width;右margin-left
+3.float + margin //左float+width+position;右父float:rigth+width:100%+margin-left;右子margin-left
+4.table //父table+width+table-layout:fixed;左右table-cell;左width+padding-right
+5.flex //父display:flex;左width+margin-right;右flex:1
+
+两列定宽+一列自适应
+1.float + overflow //左中float+width+margin-right;右overflow:hidden
+
+不定宽+自适应
+1.float+overflow //左float:left+margin-right;右overflow：hidden;左子width
+2.table //父dispaly:table+width;左右table-cell;左width+0.1%+padding-right;左子width
+3.flex //父flex;左margin-left；左子width；右flex
+
+两列不定宽+一列自适应
+1.float //左中float：left+margin-righ;右overflow;左中子width
+
+等分布局
+1.float //父级margin-left:-*px；子级float+width+padding-left+box-sizing:border-box-sizing
+2.table //父级修正框margin-left：-20px;父级display:table+width+table-layout:fixed;子级table-cell+padding-left
+3.flex //父级flex;子级flex:1;.column+.column{margin-left}子框与子框间距
+
+定宽+自适应+两块高度一样高
+1.float //父级overflow:hidden;左右padding-bottom:9999px+margin-bottom:-9999px;左float：left+width+margin-right;右overflow：hidden;过分加大左右框的高度
+2.table //父级table+width+table-layout:fixed;左右table-cell;左width+padding-right
+3.flex //父级flex;左width+margin-right；右flex:1
+4.display //父级width+dispaly:-webkit-box;左width+margin-right;右-webkit-box-flex:1
+
+全屏布局
+四部分：头部top+底部bottom+中间左部left+中间右部right；自适应部分中间右部
+1.position 	//html,body,父级margin+height+overflow:hidden;
+			//顶部absolute+top:0+left:0+right:0+hieght;
+			//左部absolute+left:0+top:100px+bottom:50px+width
+			//右部absolute+left:200px+top:100px+bottom:50px+overflow:auto
+			//右部子级min-height：1000px
+			//底部absolute+left:0+right:0+bottom:height:50px
+2.flex	//html,body,父级margin:0+height:100%+overflow
+		//父级flex+flex-direction:column
+		//顶部height
+		//底部height
+		//中间层flex:1+dsiplay:flex
+		//右部flex:1+overflow:auto
+		//右部子级:min-height
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
