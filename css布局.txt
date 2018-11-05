@@ -1,4 +1,4 @@
-
+﻿11.5
 **居中
 水品居中
 1.inline-block + text-align  //父级 + 子级
