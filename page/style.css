@@ -1,0 +1,158 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* body {
+	font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
+} */
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	color: #b63b4d;
+	text-decoration: none;
+}
+
+.search {
+	height: 45px;
+	background-color: #fafafa;
+	position: relative;
+	padding: 8px 15px;
+	box-sizing: border-box;
+}
+
+.search-mid {
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #ccc;
+	background-color: transparent;
+	text-align: center;
+	line-height: 2;
+	font-size: 15px;
+}
+
+.search-mid .left-icon {
+	vertical-align: text-top;
+}
+
+.search-input {
+	border: none;
+	outline: none;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+}
+
+.accordion {
+	width: 100%;
+	background: #FFF;
+	/* -webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px; */
+}
+
+.accordion .link {
+	cursor: pointer;
+	display: block;
+	padding-left: 41px;
+	padding-right: 16px;
+	height: 45px;
+	line-height: 45px;
+	color: #333;
+	font-size: 15px;
+	border-bottom: 1px solid #ebebeb;
+	position: relative;
+	-webkit-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.accordion li .left-icon {
+	position: absolute;
+	left: 16px;
+	top: 15px;
+}
+
+.accordion li .right-arrow {
+	position: absolute;
+	top: 15px;
+	left: 12px;
+	-webkit-transition: all 0.4s ease;
+	-o-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+}
+
+.accordion li .fa-chevron-down {
+	right: 12px;
+	left: auto;
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+
+.accordion li.open .link {
+	color: #333;
+}
+
+.accordion li.open .fa-chevron-down {
+	-webkit-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
+
+/**
+ * Submenu
+ -----------------------------*/
+
+.submenu {
+	display: none;
+	background: #fafafa;
+	font-size: 15px;
+}
+
+.submenu li {
+	position: relative;
+	border-bottom: 1px solid #ebebeb;
+}
+
+.submenu li .right-icon {
+	position: absolute;
+	right: 12px;
+	top: 15px;
+}
+
+.submenu a {
+	display: block;
+	text-decoration: none;
+	color: #666666;
+	padding: 12px;
+	padding-left: 41px;
+	-webkit-transition: all 0.25s ease;
+	-o-transition: all 0.25s ease;
+	transition: all 0.25s ease;
+}
+
+/* .submenu a:hover {
+	background: #b63b4d;
+	color: #FFF;
+} */
+
+.left-icon, .link .right-arrow, .right-icon {
+	width: 16px;
+	height: 16px;
+}
+
+.accordion li .left-icon, .accordion li .right-arrow, .submenu li .right-icon {
+	top: 15px;
+}

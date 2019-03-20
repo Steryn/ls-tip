@@ -1,0 +1,206 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>操盘体系</title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+			/>
+
+		<link rel="stylesheet"
+			href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="style.css">
+
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<link
+			href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
+			rel="stylesheet">
+		<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
+		<!-- <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="search">
+				<input class="search-input" type="text" :modal="inputValue" placeholder="">
+				<div class="search-mid">
+					<!-- <img class="left-icon fa fa-paint-brush"
+						src="../../images/set-date-zq.png"> -->
+					<i class="fa fa-search"></i>
+					<span>请输入报表名称</span>
+				</div>
+			</div>
+
+			<div class="accordion-group" id="accordion">
+				<ul id="accordion" class="accordion">
+					<li v-for="(item,key,index) in dataArr">
+						<div class="link">
+							<img class="left-icon fa fa-paint-brush"
+								:src="`./images/${key+1}.png`">
+							{{item.title}}
+							<img class="right-arrow fa fa-chevron-down"
+								src="../../images/linkmen/arrow-right.png">
+						</div>
+						<ul class="submenu">
+							<li v-for="(itm,idx) in item.subArr">
+								<a href="#">{{itm}}</a>
+								<img class="right-icon"
+									src="../../images/linkmen/arrow-right.png">
+							</li>
+						</ul>
+					</li>
+
+					<!-- <li>
+						<div class="link">
+							<img class="left-icon fa fa-paint-brush"
+								src="../../images/set-date-zq.png">
+							Photoshop
+							<img class="right-arrow fa fa-chevron-down"
+								src="../../images/linkmen/arrow-right.png">
+						</div>
+						<ul class="submenu">
+							<li>
+								<a href="#">Photoshop</a>
+								<img class="right-icon"
+									src="../../images/linkmen/arrow-right.png">
+							</li>
+							<li><a href="#">HTML</a>
+								<img class="right-icon"
+									src="../../images/linkmen/arrow-right.png">
+							</li>
+							<li><a href="#">CSS</a>
+								<img class="right-icon"
+									src="../../images/linkmen/arrow-right.png">
+							</li>
+							<li><a href="#">Maquetacion web</a>
+								<img class="right-icon"
+									src="../../images/linkmen/arrow-right.png">
+							</li>
+						</ul>
+					</li> -->
+				</ul>
+
+			</div>
+		</div>
+	</body>
+
+	<script src="../../js/mui.min.js"></script>
+	<script type="text/javascript" src="../../js/public/public.js?v.0.1"></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello Vue!',
+				inputValue:"",
+				dataArr:[
+					{
+						title:"第一部分",
+						subArr:[
+							"Photoshop","Photoshop","Photoshop","Photoshop"
+						]
+					},
+					{
+						title:"第二部分",
+						subArr:[
+							"Photoshop","Photoshop","Photoshop","Photoshop"
+						]
+					},
+					{
+						title:"第一部分",
+						subArr:[
+							"Photoshop","Photoshop","Photoshop","Photoshop"
+						]
+					},
+					{
+						title:"第二部分",
+						subArr:[
+							"Photoshop","Photoshop","Photoshop","Photoshop"
+						]
+					},
+					{
+						title:"第一部分",
+						subArr:[
+							"Photoshop","Photoshop","Photoshop","Photoshop"
+						]
+					},
+					{
+						title:"第二部分",
+						subArr:[
+							"Photoshop","Photoshop","Photoshop","Photoshop"
+						]
+					},
+				]
+			},
+			mounted(){
+				// this.getData();
+			},
+			methods: {
+				getData() {
+					var isResult = function(data){
+						if(data.resultCode!='1'){
+							mui.toast(data.resultDesc);
+							return false;
+						}
+						return true;
+					}
+					var jsonInit = bonc.analysisUrlServerkeyNew(['accessToken']);
+					var json = {
+						"app_id":'f4e7de2e82f0b84f',
+						"user_id":jsonInit.accessToken,
+					}
+					bonc.boncAjax('prizeActivity',json,function(data){
+						console.log(data);
+						if(isResult(data)){
+							console.log(data);
+						}
+					});
+				}
+			},
+		})
+	</script>
+	<script>
+		$(function() {
+			var Accordion = function(el, multiple) {
+				this.el = el || {};
+				this.multiple = multiple || false;
+
+				var links = this.el.find('.link');
+				links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)
+			}
+
+			Accordion.prototype.dropdown = function(e) {
+				var $el = e.data.el;
+					$this = $(this),
+					$next = $this.next();
+
+				$next.slideToggle("fast");
+				$this.parent().toggleClass('open');
+
+				if (!e.data.multiple) {
+					$el.find('.submenu').not($next).slideUp().parent().removeClass('open');
+				};
+			}
+
+			var accordion = new Accordion($('#accordion'), false);
+
+			var searchMid = $(".search-mid");
+			var searchInput = $(".search-input");
+
+			searchMid.click(function(){
+				searchInput.focus();
+				$(this).hide()
+			})
+			searchInput.blur(function(e){
+				if(e.currentTarget.value.length==0){
+					searchMid.show();
+				}
+				else{}
+			});
+		});
+	</script>
+</html>
